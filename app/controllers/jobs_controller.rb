@@ -53,4 +53,16 @@ class JobsController < ApplicationController
 
   end
 
+  def delete
+    #remove this job from database
+    job = Job.find(params[:id]) #only need instance variables when accessed in a view external to the controller (ask yourself, do I need this variable in a view?)
+    if job.destroy
+    #if successful go back to index page
+    redirect_to jobs_path
+    else
+    #if unsuccessful show an error
+
+    end
+  end
+
 end
