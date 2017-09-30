@@ -9,6 +9,9 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+
+    #when we don't specify differently, rails is automatically calling a render on a view with the exact same as that controller action
+    #render :new
   end
 
   def create
