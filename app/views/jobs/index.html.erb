@@ -5,7 +5,8 @@
 
 <% @jobs.each do |job| %>
   <div class="job">
-    <strong><%= job.title %></strong>
-    <%= job.description %>
+    <strong>
+      <%= link_to job.title, job_path(job.id) %>
+    </strong>
   </div>
 <% end %>
