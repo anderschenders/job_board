@@ -30,4 +30,27 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
+  def update
+    #update database
+    @job = Job.find(params[:id])
+    result = @job.update({
+      title: params[:job][:title],
+      description: params[:job][:description],
+      company: params[:job][:company]
+      })
+
+    if result
+      #if successful go back to show view
+      redirect_to job_path(@job.id) #(params[:id])
+      # get /jobs/:id (handled by the router, then goes to controller action, which is show action, runs all code in show action (just like if it was coming from the broswer), then goes to rails model, finds data, pulls in the view for the show view and sends that back to the broswer)
+    else
+      #if unsuccessful stay on the form
+      #does not go to the router or controller and therefore no additional model operations
+      #goes directly from the controller we're in, to pull that view pass in whatever data we curently have at the moment (@job) and send that view back as the response
+      #does not execute whole rails request cycle and pull in any additional data
+      render :edit
+    end
+
+  end
+
 end
