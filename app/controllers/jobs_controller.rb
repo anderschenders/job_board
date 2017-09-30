@@ -25,4 +25,9 @@ class JobsController < ApplicationController
       render :new #=>takes what data controller currently has and sends only that view (:new) and sending it back to user (goes back to view and sends that back with current data)
     end
   end
+
+  def edit
+    @job = Job.find(params[:id])
+  end
+
 end
